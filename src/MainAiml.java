@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
+import javax.swing.JScrollBar;
+
 import org.alicebot.gui.SimpleConsole;
 import org.alicebot.server.core.Bot;
 
@@ -38,8 +40,10 @@ public class MainAiml {
 						while(true)
 						try {
 							Thread.sleep(100);
-							
+							JScrollBar vertical = chat.scroll.getVerticalScrollBar();
+						       vertical.setValue( vertical.getMaximum() );
 							chat.incoming.setText(chat.incoming.getText()+"\n"+br.readLine());
+							
 						} catch (Exception e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();

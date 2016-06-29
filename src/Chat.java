@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.JMenuBar;
@@ -42,8 +43,7 @@ public class Chat {
        incoming.setEditable(false);
 
                                                                           
-       // add menu items
-                                                                     
+       // add menu items                             
                                                                             
        // send message when user clicks the button
        send.addActionListener(new ActionListener() {
