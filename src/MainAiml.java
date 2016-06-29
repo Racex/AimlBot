@@ -31,19 +31,14 @@ public class MainAiml {
 			    stdin.println("cd c:\\ab");//\ /A /Q
 			    stdin.println(" java -cp lib/Ab.jar Main bot=test action=chat trace=false");
 			    //java -cp lib/Ab.jar Main bot=test action=chat trace=false
-			    stdin.println("siema");
-			    stdin.println("hello alice");
-			    try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+			    stdin.flush();
 			    try{
-					Chat chat=new Chat();
+					Chat chat=new Chat(stdin);
 					new Thread(()->{
 						while(true)
 						try {
+							Thread.sleep(100);
+							
 							chat.incoming.setText(chat.incoming.getText()+"\n"+br.readLine());
 						} catch (Exception e) {
 							// TODO Auto-generated catch block
@@ -55,10 +50,7 @@ public class MainAiml {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			    
-			    // write any other commands you want here
-			   stdin.flush();
-			
+		
 		
 			  
 				

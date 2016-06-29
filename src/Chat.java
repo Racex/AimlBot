@@ -2,6 +2,7 @@ import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.PrintWriter;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -31,8 +32,10 @@ public class Chat {
 	JTextArea outgoing = new JTextArea();
 	JScrollPane scroll = new JScrollPane (incoming, 
 			   JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-	public Chat() throws Exception
+	PrintWriter stdin;
+	public Chat(PrintWriter stdin) throws Exception
     {
+		this.stdin=stdin;
        // create publisher and subscriber
                                                                         
        // create the gui
@@ -45,7 +48,8 @@ public class Chat {
        // send message when user clicks the button
        send.addActionListener(new ActionListener() {
           public void actionPerformed(ActionEvent e) {
-             
+             stdin.println(outgoing.getText());
+             stdin.flush();
              
                 
           }
