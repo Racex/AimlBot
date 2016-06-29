@@ -31,6 +31,7 @@ public class MainAiml {
 			    stdin.println("cd c:\\ab");//\ /A /Q
 			    stdin.println(" java -cp lib/Ab.jar Main bot=test action=chat trace=false");
 			    //java -cp lib/Ab.jar Main bot=test action=chat trace=false
+			    stdin.println("siema");
 			    stdin.println("hello alice");
 			    try {
 					Thread.sleep(1000);
@@ -54,9 +55,12 @@ public class MainAiml {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			    // write any other commands you want here
-			    stdin.close();
 			    
+			    // write any other commands you want here
+			   stdin.flush();
+			
+		
+			  
 				
 		
 	//	Bot bot = new Bot("Alice");
