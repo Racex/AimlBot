@@ -17,7 +17,7 @@ public class AimlTample {
 		 aimlName = "test.aiml";
 		 aiml =new File("C:/ab/bots/test/aimlif/test.aiml");
 		 File csv = new File("C:/ab/bots/test/aimlif/test.aiml.csv");
-		 plikaiml = new Scanner(aiml);
+		  plikaiml = new Scanner(aiml);
 		 plikcsv = new Scanner(csv);
 		 try {
 			pwaiml = new FileWriter(aiml,true);

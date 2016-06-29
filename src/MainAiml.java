@@ -1,5 +1,8 @@
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
@@ -22,23 +25,39 @@ public class MainAiml {
 			        "cmd",
 			    };
 			    Process p = Runtime.getRuntime().exec(command);
-			    new Thread(new SyncPipe(p.getErrorStream(), System.err)).start();
-			    new Thread(new SyncPipe(p.getInputStream(), System.out)).start();
 			    PrintWriter stdin = new PrintWriter(p.getOutputStream());
+			    InputStream is = p.getInputStream();
+			    BufferedReader br = new BufferedReader(new InputStreamReader(is));
 			    stdin.println("cd c:\\ab");//\ /A /Q
 			    stdin.println(" java -cp lib/Ab.jar Main bot=test action=chat trace=false");
 			    //java -cp lib/Ab.jar Main bot=test action=chat trace=false
-			    
-			    // write any other commands you want here
-			    stdin.close();
-			    int returnCode = 0;
-				try {
-					returnCode = p.waitFor();
-				} catch (InterruptedException e) {
+			    stdin.println("hello alice");
+			    try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			    try{
+					Chat chat=new Chat();
+					new Thread(()->{
+						while(true)
+						try {
+							chat.incoming.setText(chat.incoming.getText()+"\n"+br.readLine());
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}).start();
+					
+				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			    System.out.println("Return code = " + returnCode);
+			    // write any other commands you want here
+			    stdin.close();
+			    
+				
 		
 	//	Bot bot = new Bot("Alice");
 	//	SimpleConsole m= new SimpleConsole();

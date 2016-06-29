@@ -10,11 +10,12 @@ class SyncPipe implements Runnable
 	  public void run() {
 	      try
 	      {
-	          final byte[] buffer = new byte[1024];
-	          for (int length = 0; (length = istrm_.read(buffer)) != -1; )
-	          {
-	              ostrm_.write(buffer, 0, length);
-	          }
+//	          final byte[] buffer = new byte[1024];
+//	          for (int length = 0; (length = istrm_.read(buffer)) != -1; )
+//	          {
+//	        	  Thread.sleep(1000);
+//	              ostrm_.write(buffer, 0, length);
+//	          }
 	      }
 	      catch (Exception e)
 	      {
